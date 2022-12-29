@@ -40,6 +40,6 @@ class RateDiscountPolicyTest {
 
 
         //then
-        assertThat(discount).isEqualTo(1000);
+        assertThat(discount).isEqualTo(0);
     }
 }

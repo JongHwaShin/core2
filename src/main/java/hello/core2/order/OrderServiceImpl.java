@@ -3,12 +3,17 @@ package hello.core2.order;
 import hello.core2.discount.DiscountPolicy;
 import hello.core2.member.Member;
 import hello.core2.member.MemberRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+@Component
 public class OrderServiceImpl implements OrderService{
-    private final MemberRepository memberRepository;
-    private final DiscountPolicy discountPolicy;
+    @Autowired private  MemberRepository memberRepository;
+    @Autowired private  DiscountPolicy discountPolicy;
 
+    @Autowired
     public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
+
         this.memberRepository = memberRepository;
         this.discountPolicy = discountPolicy;
     }
@@ -20,5 +25,9 @@ public class OrderServiceImpl implements OrderService{
 
         return new Order(memberId, itemName, itemPrice, discountPrice);
 
+    }
+    //테스트용도
+    public MemberRepository getMemberRepository() {
+        return memberRepository;
     }
 }
